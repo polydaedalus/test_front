@@ -246,6 +246,9 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
           </BulletList>
         </Box>
       </Flex>
+      <Flex justifyContent="center">
+        <LinkExternal href={linkHref}>{linkLabel}</LinkExternal>
+      </Flex>
     </Modal>
   )
 }

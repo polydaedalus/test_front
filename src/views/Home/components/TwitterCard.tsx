@@ -11,18 +11,18 @@ const StyledTwitterCard = styled(Card)`
   margin-right: auto;
 `
 
-const Row = styled.div`
-  align-items: center;
-  display: flex;
-  font-size: 14px;
-  justify-content: space-between;
-  margin-bottom: 8px;
-`
+// const Row = styled.div`
+//  align-items: center;
+//  display: flex;
+//  font-size: 14px;
+//  justify-content: space-between;
+//  margin-bottom: 8px;
+// `
 
 const TwitterCard = () => {
   const { t } = useTranslation()
 
-  const { isDark, toggleTheme, theme } = useTheme();
+  const { isDark } = useTheme();
 
   return (
     <StyledTwitterCard>

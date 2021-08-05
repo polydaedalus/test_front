@@ -7,7 +7,6 @@ import FarmStakingCard from 'views/Home/components/FarmStakingCard'
 import CakeStats from 'views/Home/components/CakeStats'
 import TotalValueLockedCard from 'views/Home/components/TotalValueLockedCard'
 import EarnAPRCard from 'views/Home/components/EarnAPRCard'
-import EarnAssetCard from 'views/Home/components/EarnAssetCard'
 import TwitterCard from './components/TwitterCard'
 
 const Hero = styled.div`

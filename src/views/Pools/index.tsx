@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { Heading, Flex, Image, Text } from 'iridiumfinance'
+import { Heading, Flex, Text } from 'iridiumfinance'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
 import { useTranslation } from 'contexts/Localization'
@@ -13,15 +13,15 @@ import { latinise } from 'utils/latinise'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
 import PageHeader from 'components/PageHeader'
-import SearchInput from 'components/SearchInput'
-import Select, { OptionProps } from 'components/Select/Select'
+// import SearchInput from 'components/SearchInput'
+// import { OptionProps } from 'components/Select/Select'
 import { Pool } from 'state/types'
 import PoolCard from './components/PoolCard'
 import CakeVaultCard from './components/CakeVaultCard'
-import PoolTabButtons from './components/PoolTabButtons'
+// import PoolTabButtons from './components/PoolTabButtons'
 import BountyCard from './components/BountyCard'
 import HelpButton from './components/HelpButton'
-import PoolsTable from './components/PoolsTable/PoolsTable'
+// import PoolsTable from './components/PoolsTable/PoolsTable'
 import { ViewMode } from './components/ToggleView/ToggleView'
 import { getAprData, getCakeVaultEarnings } from './helpers'
 
@@ -29,24 +29,24 @@ const CardLayout = styled(FlexLayout)`
   justify-content: center;
 `
 
-const PoolControls = styled(Flex)`
-  flex-direction: column;
-  margin-bottom: 24px;
-  ${({ theme }) => theme.mediaQueries.md} {
-    flex-direction: row;
-  }
-`
+// const PoolControls = styled(Flex)`
+//  flex-direction: column;
+//  margin-bottom: 24px;
+//  ${({ theme }) => theme.mediaQueries.md} {
+//    flex-direction: row;
+//  }
+// `
 
-const SearchSortContainer = styled(Flex)`
-  gap: 10px;
-  justify-content: space-between;
-`
+// const SearchSortContainer = styled(Flex)`
+//  gap: 10px;
+//  justify-content: space-between;
+// `
 
-const ControlStretch = styled(Flex)`
-  > div {
-    flex: 1;
-  }
-`
+// const ControlStretch = styled(Flex)`
+//  > div {
+//    flex: 1;
+//  }
+// `
 
 const NUMBER_OF_POOLS_VISIBLE = 12
 
@@ -54,14 +54,14 @@ const Pools: React.FC = () => {
   const location = useLocation()
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const { pools: poolsWithoutAutoVault, userDataLoaded } = usePools(account)
-  const [stakedOnly, setStakedOnly] = usePersistState(false, { localStorageKey: 'pancake_pool_staked' })
+  const { pools: poolsWithoutAutoVault } = usePools(account)
+  const [stakedOnly] = usePersistState(false, { localStorageKey: 'pancake_pool_staked' })
   const [numberOfPoolsVisible, setNumberOfPoolsVisible] = useState(NUMBER_OF_POOLS_VISIBLE)
   const [observerIsSet, setObserverIsSet] = useState(false)
   const loadMoreRef = useRef<HTMLDivElement>(null)
-  const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, { localStorageKey: 'pancake_farm_view' })
-  const [searchQuery, setSearchQuery] = useState('')
-  const [sortOption, setSortOption] = useState('hot')
+  const [viewMode] = usePersistState(ViewMode.TABLE, { localStorageKey: 'pancake_farm_view' })
+  const [searchQuery] = useState('')
+  const [sortOption] = useState('hot')
   const {
     userData: { cakeAtLastUserAction, userShares },
     fees: { performanceFee },
@@ -99,7 +99,7 @@ const Pools: React.FC = () => {
       }),
     [openPools, accountHasVaultShares],
   )
-  const hasStakeInFinishedPools = stakedOnlyFinishedPools.length > 0
+  // const hasStakeInFinishedPools = stakedOnlyFinishedPools.length > 0
 
   usePollFarmsData()
   useFetchCakeVault()
@@ -125,13 +125,13 @@ const Pools: React.FC = () => {
 
   const showFinishedPools = location.pathname.includes('history')
 
-  const handleChangeSearchQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value)
-  }
+  // const handleChangeSearchQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //  setSearchQuery(event.target.value)
+  // }
 
-  const handleSortOptionChange = (option: OptionProps): void => {
-    setSortOption(option.value)
-  }
+  // const handleSortOptionChange = (option: OptionProps): void => {
+  //  setSortOption(option.value)
+  // }
 
   const sortPools = (poolsToSort: Pool[]) => {
     switch (sortOption) {
@@ -202,7 +202,7 @@ const Pools: React.FC = () => {
     </CardLayout>
   )
 
-  const tableLayout = <PoolsTable pools={poolsToShow()} account={account} userDataLoaded={userDataLoaded} />
+  // const tableLayout = <PoolsTable pools={poolsToShow()} account={account} userDataLoaded={userDataLoaded} />
 
   return (
     <>
