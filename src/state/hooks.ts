@@ -82,6 +82,11 @@ export const useFarms = (): FarmsState => {
   return farms
 }
 
+export const useFarmsData = (): Farm[] => {
+  const farms = useSelector((state: State) => state.farms.data)
+  return farms
+}
+
 export const useFarmFromPid = (pid): Farm => {
   const farm = useSelector((state: State) => state.farms.data.find((f) => f.pid === pid))
   return farm
@@ -321,6 +326,7 @@ export const useAchievements = () => {
   return achievements
 }
 
+// Prices
 export const usePriceBnbBusd = (): BigNumber => {
   const bnbBusdFarm = useFarmFromPid(252)
   return new BigNumber(bnbBusdFarm.quoteToken.busdPrice)
@@ -329,6 +335,32 @@ export const usePriceBnbBusd = (): BigNumber => {
 export const usePriceCakeBusd = (): BigNumber => {
   const cakeBnbFarm = useFarmFromPid(251)
   return new BigNumber(cakeBnbFarm.token.busdPrice)
+}
+
+// TVL substitute until debank API
+export const useTotalValue = (): BigNumber => {
+  // const farms = useFarms();
+  const farms = useFarmsData();
+  const cakePrice = usePriceCakeBusd();
+  let value = new BigNumber(0);
+  for (let i = 0; i < farms.length; i++) {
+    const farm = farms[i]
+    if (farm.lpTotalInQuoteToken) {
+      let val;
+      if (farm.quoteToken.symbol === 'CAKE') {
+        val = (cakePrice.times(farm.lpTotalInQuoteToken));
+      }else{
+        val = (farm.lpTotalInQuoteToken); // USDC etc
+      }
+      value = value.plus(val);
+    }
+  }
+  // Calculate TVL for Vault
+  const vault = useCakeVault();
+  const VaultValue = new BigNumber(cakePrice.times(vault.totalCakeInVault))
+  value = value.plus(VaultValue)
+  const output = value.toString() === Infinity.toString() ? new BigNumber(0): value;
+  return output;
 }
 
 // Block

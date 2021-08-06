@@ -133,6 +133,10 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
         <Text>{t('Earn')}:</Text>
         <Text bold>{earnLabel}</Text>
       </Flex>
+      <Flex justifyContent='space-between'>
+        <Text style={{ fontSize: '24px' }}>{t('Deposit Fee')}:</Text>
+        <Text bold style={{ fontSize: '24px' }}>{(400 / 100)}%</Text>
+      </Flex>
       <CardActionsContainer farm={farm} account={account} addLiquidityUrl={addLiquidityUrl} />
       <Divider />
       <ExpandableSectionButton

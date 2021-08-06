@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Skeleton } from 'iridiumfinance'
-import { ChainId } from '@pancakeswap-libs/sdk'
+// import { ChainId } from '@pancakeswap-libs/sdk'
 import max from 'lodash/max'
 import { NavLink } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
@@ -63,7 +63,7 @@ const EarnAPRCard = () => {
             new BigNumber(farm.poolWeight),
             cakePrice,
             totalLiquidity,
-            farm.lpAddresses[ChainId.MAINNET],
+            // farm.lpAddresses[ChainId.MAINNET],
           )
           return cakeRewardsApr + lpRewardsApr
         }
