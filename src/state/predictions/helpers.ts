@@ -4,7 +4,7 @@ import { ethers } from 'ethers'
 import { Bet, BetPosition, Market, PredictionsState, PredictionStatus, Round, RoundData } from 'state/types'
 import { multicallv2 } from 'utils/multicall'
 import predictionsAbi from 'config/abi/predictions.json'
-import { getPredictionsAddress } from 'utils/addressHelpers'
+// import { getPredictionsAddress } from 'utils/addressHelpers'
 
 import {
   BetResponse,
@@ -195,57 +195,57 @@ type StaticPredictionsData = Pick<
 /**
  * Gets static data from the contract
  */
-export const getStaticPredictionsData = async (): Promise<StaticPredictionsData> => {
-  const calls = ['currentEpoch', 'intervalBlocks', 'minBetAmount', 'paused', 'bufferBlocks', 'rewardRate'].map(
-    (method) => ({
-      address: getPredictionsAddress(),
-      name: method,
-    }),
-  )
-  const [[currentEpoch], [intervalBlocks], [minBetAmount], [isPaused], [bufferBlocks], [rewardRate]] =
-    await multicallv2(predictionsAbi, calls)
+// export const getStaticPredictionsData = async (): Promise<StaticPredictionsData> => {
+//   const calls = ['currentEpoch', 'intervalBlocks', 'minBetAmount', 'paused', 'bufferBlocks', 'rewardRate'].map(
+//     (method) => ({
+//       address: getPredictionsAddress(),
+//       name: method,
+//     }),
+//   )
+//   const [[currentEpoch], [intervalBlocks], [minBetAmount], [isPaused], [bufferBlocks], [rewardRate]] =
+//     await multicallv2(predictionsAbi, calls)
 
-  return {
-    status: isPaused ? PredictionStatus.PAUSED : PredictionStatus.LIVE,
-    currentEpoch: currentEpoch.toNumber(),
-    intervalBlocks: intervalBlocks.toNumber(),
-    bufferBlocks: bufferBlocks.toNumber(),
-    minBetAmount: minBetAmount.toString(),
-    rewardRate: rewardRate.toNumber(),
-  }
-}
+//   return {
+//     status: isPaused ? PredictionStatus.PAUSED : PredictionStatus.LIVE,
+//     currentEpoch: currentEpoch.toNumber(),
+//     intervalBlocks: intervalBlocks.toNumber(),
+//     bufferBlocks: bufferBlocks.toNumber(),
+//     minBetAmount: minBetAmount.toString(),
+//     rewardRate: rewardRate.toNumber(),
+//   }
+// }
 
-export const getMarketData = async (): Promise<{
-  rounds: Round[]
-  market: Market
-}> => {
-  const [[paused], [currentEpoch]] = (await multicallv2(
-    predictionsAbi,
-    ['paused', 'currentEpoch'].map((name) => ({
-      address: getPredictionsAddress(),
-      name,
-    })),
-  )) as [[boolean], [ethers.BigNumber]]
+// export const getMarketData = async (): Promise<{
+//   rounds: Round[]
+//   market: Market
+// }> => {
+//   const [[paused], [currentEpoch]] = (await multicallv2(
+//     predictionsAbi,
+//     ['paused', 'currentEpoch'].map((name) => ({
+//       address: getPredictionsAddress(),
+//       name,
+//     })),
+//   )) as [[boolean], [ethers.BigNumber]]
 
-  const response = (await request(
-    GRAPH_API_PREDICTION,
-    gql`
-      query getMarketData {
-        rounds(first: 5, orderBy: epoch, orderDirection: desc) {
-          ${getRoundBaseFields()}
-        }
-      }
-    `,
-  )) as { rounds: RoundResponse[] }
+//   const response = (await request(
+//     GRAPH_API_PREDICTION,
+//     gql`
+//       query getMarketData {
+//         rounds(first: 5, orderBy: epoch, orderDirection: desc) {
+//           ${getRoundBaseFields()}
+//         }
+//       }
+//     `,
+//   )) as { rounds: RoundResponse[] }
 
-  return {
-    rounds: response.rounds.map(transformRoundResponse),
-    market: {
-      epoch: currentEpoch.toNumber(),
-      paused,
-    },
-  }
-}
+//   return {
+//     rounds: response.rounds.map(transformRoundResponse),
+//     market: {
+//       epoch: currentEpoch.toNumber(),
+//       paused,
+//     },
+//   }
+// }
 
 export const getTotalWon = async (): Promise<number> => {
   const response = (await request(

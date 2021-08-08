@@ -342,13 +342,13 @@ export interface VotingState {
 // Global state
 
 export interface State {
-  achievements: AchievementState
+  // achievements: AchievementState
   block: BlockState
   farms: FarmsState
   pools: PoolsState
-  predictions: PredictionsState
-  profile: ProfileState
-  teams: TeamsState
-  collectibles: CollectiblesState
+  // predictions: PredictionsState
+  // profile: ProfileState
+  // teams: TeamsState
+  // collectibles: CollectiblesState
   voting: VotingState
 }
