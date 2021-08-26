@@ -18,9 +18,11 @@ type PublicFarmData = {
   multiplier: string
 }
 
+const CHAIN_ID = process.env.REACT_APP_CHAIN_ID
+
 const fetchFarm = async (farm: Farm): Promise<PublicFarmData> => {
   const { pid, lpAddresses, token, quoteToken } = farm
-  const lpAddress = getAddress(lpAddresses)
+  const lpAddress = farm.isTokenOnly ? farm.token.address[CHAIN_ID] : lpAddresses[CHAIN_ID]
   const calls = [
     // Balance of token in the LP contract
     {

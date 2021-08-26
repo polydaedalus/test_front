@@ -2,8 +2,8 @@
 	{
 		"inputs": [
 			{
-				"internalType": "contract IridToken",
-				"name": "_irid",
+				"internalType": "contract PlatinToken",
+				"name": "_platin",
 				"type": "address"
 			},
 			{
@@ -144,7 +144,7 @@
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "iridPerBlock",
+				"name": "platinPerBlock",
 				"type": "uint256"
 			}
 		],
@@ -282,32 +282,6 @@
 	},
 	{
 		"inputs": [],
-		"name": "irid",
-		"outputs": [
-			{
-				"internalType": "contract IridToken",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "iridPerBlock",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "massUpdatePools",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -339,7 +313,33 @@
 				"type": "address"
 			}
 		],
-		"name": "pendingIrid",
+		"name": "pendingPlatin",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "platin",
+		"outputs": [
+			{
+				"internalType": "contract PlatinToken",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "platinPerBlock",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -396,7 +396,7 @@
 			},
 			{
 				"internalType": "uint256",
-				"name": "accIridPerShare",
+				"name": "accPlatinPerShare",
 				"type": "uint256"
 			},
 			{
@@ -520,7 +520,7 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_iridPerBlock",
+				"name": "_platinPerBlock",
 				"type": "uint256"
 			}
 		],

@@ -16,9 +16,9 @@ const farms: FarmConfig[] = [
   // },
   {
     pid: 251,
-    lpSymbol: 'IRID-USDC LP',
+    lpSymbol: 'PLATIN-USDC LP',
     lpAddresses: {
-      137: '0x4F34831Ac774978BC1f192c45B574022D5969103',
+      137: '0x60BEFF3E9d3b4E8409471Ecc58e568EB153F1e00',
     },
     token: tokens.cake,
     quoteToken: tokens.usdc,
@@ -35,35 +35,35 @@ const farms: FarmConfig[] = [
   /**
    * V3 by order of release (some may be out of PID order due to multiplier boost)
    */
+  // {
+  //   pid: 1,
+  //   lpSymbol: 'PLATIN-PLATIN LP',
+  //   lpAddresses: {
+  //     137: '0xD592bfB50ad10088A428F1a4e74213090fC4A6dC',
+  //   },
+  //   token: tokens.platin,
+  //   quoteToken: tokens.cake,
+  // },
   {
-    pid: 0,
-    lpSymbol: 'IRID-PLATIN LP',
+    pid: 1,
+    lpSymbol: 'PLATIN-WMATIC LP',
     lpAddresses: {
-      137: '0xD592bfB50ad10088A428F1a4e74213090fC4A6dC',
-    },
-    token: tokens.platin,
-    quoteToken: tokens.cake,
-  },
-  {
-    pid: 2,
-    lpSymbol: 'IRID-WMATIC LP',
-    lpAddresses: {
-      137: '0x4A945aD2D521Dbc2a2fDfeBb69547CB944B40AF3',
+      137: '0x8c79D1CcB5E5Ea4Df5e0FF14b59A305f2808ac93',
     },
     token: tokens.wmatic,
     quoteToken: tokens.cake,
   },
   {
-    pid: 3,
-    lpSymbol: 'PLATIN-USDC LP',
+    pid: 2,
+    lpSymbol: 'PLATIN-WETH LP',
     lpAddresses: {
-      137: '0x60BEFF3E9d3b4E8409471Ecc58e568EB153F1e00',
+      137: '0x1996ABaFb1ce1de7B5357eC9D281Bc378A0b8DEd',
     },
-    token: tokens.platin,
-    quoteToken: tokens.usdc,
+    token: tokens.weth,
+    quoteToken: tokens.cake,
   },
   {
-    pid: 4,
+    pid: 3,
     lpSymbol: 'WETH-USDC LP',
     lpAddresses: {
       137: '0x853ee4b2a13f8a742d64c8f088be7ba2131f670d',
@@ -78,23 +78,23 @@ const farms: FarmConfig[] = [
   {
     pid: 5,
     isTokenOnly: true,
-    lpSymbol: 'IRID',
-    lpAddresses: {
-      137: '0x4F34831Ac774978BC1f192c45B574022D5969103',
-    },
-    token: tokens.cake,
-    quoteToken: tokens.usdc,
-  },
-  {
-    pid: 6,
-    isTokenOnly: true,
     lpSymbol: 'PLATIN',
     lpAddresses: {
       137: '0x60BEFF3E9d3b4E8409471Ecc58e568EB153F1e00',
     },
-    token: tokens.platin,
+    token: tokens.cake,
     quoteToken: tokens.usdc,
   },
+  // {
+  //   pid: 6,
+  //   isTokenOnly: true,
+  //   lpSymbol: 'PLATIN',
+  //   lpAddresses: {
+  //     137: '0x60BEFF3E9d3b4E8409471Ecc58e568EB153F1e00',
+  //   },
+  //   token: tokens.platin,
+  //   quoteToken: tokens.usdc,
+  // },
   {
     pid: 7,
     isTokenOnly: true,
@@ -158,21 +158,21 @@ const farms: FarmConfig[] = [
   {
     pid: 13,
     isTokenOnly: true,
-    lpSymbol: 'DAI',
+    lpSymbol: 'PolyDoge',
     lpAddresses: {
-      137: '0xf04adbf75cdfc5ed26eea4bbbb991db002036bdd',
+      137: '0x7b3E67E63906d8576466c2f48158A30be0a9e36c',
     },
-    token: tokens.dai,
+    token: tokens.polydoge,
     quoteToken: tokens.usdc,
   },
   {
-    pid: 13,
-    isTokenOnly: true,
-    lpSymbol: 'USDT',
+    pid: 14,
+    // isTokenOnly: true,
+    lpSymbol: 'VERT-USDC LP',
     lpAddresses: {
-      137: '0x2cf7252e74036d1da831d11089d326296e64a728',
+      137: '0x668269d6E5D2c2dE31D132Ac218044211643622B',
     },
-    token: tokens.usdt,
+    token: tokens.vert,
     quoteToken: tokens.usdc,
   },
 ]

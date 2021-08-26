@@ -12,7 +12,6 @@ import SuspenseWithChunkError from './components/SuspenseWithChunkError'
 import { ToastListener } from './contexts/ToastsContext'
 import PageLoader from './components/PageLoader'
 // import EasterEgg from './components/EasterEgg'
-import Pools from './views/Pools'
 import history from './routerHistory'
 
 // Route-based code splitting
@@ -49,16 +48,16 @@ const App: React.FC = () => {
             <Route path="/pools">
               <Farms tokenMode/>
             </Route>
-            <Route path="/auto">
+            {/* <Route path="/auto">
               <Pools />
-            </Route>
+            </Route> */}
             
             {/* Redirect */}
             <Route path="/staking">
-              <Redirect to="/pools" />
+              <Redirect to="/farms" />
             </Route>
             <Route path="/syrup">
-              <Redirect to="/pools" />
+              <Redirect to="/farms" />
             </Route>
 
             {/* 404 */}

@@ -3,11 +3,11 @@ const tokens = {
     symbol: 'BNB',
     projectLink: 'https://www.binance.com/',
   },
-  // IRID
+  // PLATIN
   cake: {
     symbol: 'CAKE',
     address: {
-      137: '0x4523e85C144DE8Dd60acEc335bfC95fa87779D7C',
+      137: '0x782eb3304F8b9adD877F13a5cA321f72c4AA9804',
     },
     decimals: 18,
   },
@@ -83,6 +83,20 @@ const tokens = {
     },
     decimals: 18,
     projectLink: 'https://kalmar.io/',
+  },
+  polydoge: {
+    symbol: 'PolyDoge',
+    address: {
+      137: '0x8A953CfE442c5E8855cc6c61b1293FA648BAE472',
+    },
+    decimals: 18,
+  },
+  vert: {
+    symbol: 'VERT',
+    address: {
+      137: '0x72572ccf5208b59f4bcc14e6653d8c31cd1fc5a0',
+    },
+    decimals: 18,
   },
 }
 

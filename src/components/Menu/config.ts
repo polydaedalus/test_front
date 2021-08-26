@@ -31,19 +31,19 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     icon: 'PoolIcon',
     href: '/pools',
   },
-  {
-    label: t('Auto Pool'),
-    icon: 'PoolIcon',
-    href: '/auto',
-  },
+  // {
+  //   label: t('Auto Pool'),
+  //   icon: 'PoolIcon',
+  //   href: '/auto',
+  // },
   {
     label: t('More'),
     icon: 'MoreIcon',
     items: [
-      {
-        label: t('Github'),
-        href: 'https://github.com/pancakeswap',
-      },
+      // {
+      //   label: t('Github'),
+      //   href: 'https://github.com/pancakeswap',
+      // },
       {
         label: t('Docs'),
         href: 'https://docs.pancakeswap.finance',
